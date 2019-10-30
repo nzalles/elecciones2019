@@ -9,34 +9,49 @@
 
 	<body>
 		<input id="info_data">
-	<input id="go_button" type="button"  value="go"/>
-	<div id="result"></div>
+		<input id="chk_inluye_trep" type="checkbox" checked="checked" value="1"/>
+		<input id="go_button" type="button"  value="go"/>
+		<div id="result"></div>
 	</body>
-<script>
-	// find elements
-var button = $("#go_button");
-var result = $("#result");
+	<script>
+		// find elements
+	var button = $("#go_button");
+	var result = $("#result");
+	var inluye_trep = $("#chk_inluye_trep");
 
-button.on
-(
-	"click", function()
-	{
-		var info_data = $("#info_data").val();
-		var array_info = info_data.split(" ");
-		console.log(array_info);
+	button.on
+	(
+		"click", function()
+		{
+			var info_data = $("#info_data").val();
+			var array_info = info_data.split(" ");
+			console.log(array_info);
 
-		var newHtml = "";
-		$.each
-		(
-			array_info, 
-			function(index, word)
-			{
-				newHtml += '<img src="https://computo.oep.org.bo/resul/imgActa/' + word + '1.jpg" width="1120px" />';
-			}
-		)
-		result.html( newHtml );
-	}
-)
+			var newHtml = "";
+			var imgComputo = "";
+			var imgTrep = "";
+			$.each
+			(
+				array_info, 
+				function(index, word)
+				{
+					imgComputo = '<img src="https://computo.oep.org.bo/resul/imgActa/' + word + '1.jpg" width="1120px" />';
+					imgTrep = '<img src="https://trep.oep.org.bo/resul/imgActa/' + word + '1.jpg" width="1120px" />';
 
-</script>
+					if ( inluye_trep.is(':checked') )
+					{
+						newHtml += '<table><tr><td>' + imgComputo + '</td><td>' + imgTrep + '</td></tr></table>';
+					}
+					else
+					{
+						newHtml += imgComputo	
+					}
+					
+				}
+			)
+			result.html( newHtml );
+		}
+	)
+
+	</script>
 </html>
