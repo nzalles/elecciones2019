@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<title>VerificaActas</title>
+		<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+	</head>
+
+	<body>
+		<input id="info_data">
+	<input id="go_button" type="button"  value="go"/>
+	<div id="result"></div>
+	</body>
+<script>
+	// find elements
+var button = $("#go_button");
+var result = $("#result");
+
+button.on
+(
+	"click", function()
+	{
+		var info_data = $("#info_data").val();
+		var array_info = info_data.split(" ");
+		console.log(array_info);
+
+		var newHtml = "";
+		$.each
+		(
+			array_info, 
+			function(index, word)
+			{
+				newHtml += '<img src="https://computo.oep.org.bo/resul/imgActa/' + word + '1.jpg" width="1120px" />';
+			}
+		)
+		result.html( newHtml );
+	}
+)
+
+</script>
+</html>
